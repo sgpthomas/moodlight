@@ -1,0 +1,23 @@
+* {
+    background: black;
+    color: white;
+}
+
+#ledstrip {
+    overflow: hidden;
+    width: 100%;
+}
+
+.pixel {
+    float: left;
+    margin: 1px;
+}
+
+.row {
+    overflow: hidden;
+    width: 100%;
+}
+.col {
+    float: left;
+    margin: 10px;
+}
