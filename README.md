@@ -1,6 +1,6 @@
-# mood
+# moodlight
 
-## Run Project
+## Build and Run Project
 
 ```sh
 npm install
@@ -9,7 +9,7 @@ npm start
 npm run webpack
 ```
 
-After you see the webpack compilation succeed (the `npm run webpack` step), open up `src/index.html` (**no server needed!**). Then modify whichever `.re` file in `src` and refresh the page to see the changes.
+After you see the webpack compilation succeed (the `npm run webpack` step), open up `public/index.html` (**no server needed!**).
 
 **For more elaborate ReasonReact examples**, please see https://github.com/reasonml-community/reason-react-example
 

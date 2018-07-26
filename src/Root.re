@@ -123,7 +123,11 @@ let make = _children => {
         ...state,
         funs: {
           ...state.funs,
-          red: [(Cos(0.5, 0.1, 0., 0.5, 3), true), ...state.funs.red],
+          red:
+            List.append(
+              state.funs.red,
+              [(Cos(0.5, 0.1, 0., 0.5, 3), true)],
+            ),
         },
       })
     | UpdateRed(n, colF, vis) =>
@@ -160,7 +164,11 @@ let make = _children => {
         ...state,
         funs: {
           ...state.funs,
-          green: [(Cos(0.5, 0.1, 0., 0.5, 3), true), ...state.funs.green],
+          green:
+            List.append(
+              state.funs.green,
+              [(Cos(0.5, 0.1, 0., 0.5, 3), true)],
+            ),
         },
       })
     | UpdateGreen(n, colF, vis) =>
@@ -197,7 +205,11 @@ let make = _children => {
         ...state,
         funs: {
           ...state.funs,
-          blue: [(Cos(0.5, 0.1, 0., 0.5, 3), true), ...state.funs.blue],
+          blue:
+            List.append(
+              state.funs.blue,
+              [(Cos(0.5, 0.1, 0., 0.5, 3), true)],
+            ),
         },
       })
     | UpdateBlue(n, colF, vis) =>

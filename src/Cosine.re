@@ -17,7 +17,7 @@ let make =
       <Slider
         min=(-10)
         max=10
-        step=0.1
+        step=0.01
         default=amp
         title="Amplitude"
         onChange=(v => onUpdate(v, period, phase, offset, timeDir, visible))
