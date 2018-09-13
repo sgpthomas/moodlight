@@ -17,7 +17,7 @@ type t = {
 
 let component = ReasonReact.statelessComponent("Pixel");
 
-let string_of_px = (i: int) => Printf.sprintf("%dpx", i);
+let string_of_px = (i: px) => Printf.sprintf("%dpx", i);
 let string_of_color = ({r, g, b}) =>
   Printf.sprintf(
     "rgb(%d, %d, %d)",

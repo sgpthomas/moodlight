@@ -2,12 +2,8 @@ type state = {pixels: list(Pixel.t)};
 type action =
   | UpdateList;
 
-type transform = (int, int) => float;
-type funs = {
-  red: list(transform),
-  green: list(transform),
-  blue: list(transform),
-};
+type transform = (int, int) => (float, float, float);
+type funs = list(transform);
 
 let component = ReasonReact.reducerComponent("LedStrip");
 
@@ -34,8 +30,16 @@ let rec makePixels = (num, size) =>
 
 let test = (i, t) => float_of_int((i + t) mod 255) /. 255.;
 
-let sumList = (i, t, fList) =>
-  List.fold_left((acc, f) => f(i, t) +. acc, 0., fList);
+let sumList = (i, t, fList: list(transform)) =>
+  List.fold_left(
+    (acc, f) => {
+      let (r0, g0, b0) = f(i, t);
+      let (rT, gT, bT) = acc;
+      (r0 +. rT, g0 +. gT, b0 +. bT);
+    },
+    (0., 0., 0.),
+    fList,
+  );
 
 let make = (~num, ~size, ~time, ~funs, _children) => {
   ...component,
@@ -56,9 +60,8 @@ let make = (~num, ~size, ~time, ~funs, _children) => {
              {
                ...pix,
                color: {
-                 r: sumList(i, time, funs.red),
-                 g: sumList(i, time, funs.green),
-                 b: sumList(i, time, funs.blue),
+                 let (r, g, b) = sumList(i, time, funs);
+                 {r, g, b};
                },
              }
            )

@@ -225,7 +225,7 @@ let make = _children => {
           </div>
         </div>
       </div>
-      /* <Graph num=self.state.pixelCount size=self.state.pixelSize /> */
+      <Graph num=self.state.pixelCount size=self.state.pixelSize />
       <LedStrip
         num=self.state.pixelCount
         size=self.state.pixelSize

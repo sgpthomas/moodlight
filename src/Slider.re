@@ -18,12 +18,18 @@ let make = (~min, ~max, ~step, ~default, ~title="", ~onChange, _children) => {
     | ValueChanged(v) => ReasonReact.Update({value: v})
     },
   render: self =>
-    <div>
-      (ReasonReact.string(title))
+    <div className="slider">
+      <div>
+        (
+          ReasonReact.string(
+            title ++ "= " ++ Js.Float.toString(self.state.value),
+          )
+        )
+      </div>
       <input
         _type="range"
         min
-        max=(string_of_int(max))
+        max=(Js.Float.toString(max))
         step
         value=(Js.Float.toString(self.state.value))
         onChange=(
@@ -34,6 +40,5 @@ let make = (~min, ~max, ~step, ~default, ~title="", ~onChange, _children) => {
           }
         )
       />
-      (ReasonReact.string(Js.Float.toString(self.state.value)))
     </div>,
 };
